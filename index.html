@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuunazinha Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0f0f1a;
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* HEADER COM FOTO DE FUNDO - POSIÇÃO AJUSTADA */
+        .header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(rgba(15,15,26,0.7), rgba(15,15,26,0.5)), 
+                        url('https://i.imgur.com/bJV1NxD.jpeg');
+            background-size: cover;
+            background-position: center 75%;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        /* LOGOS NO TOPO - 3 COLUNAS */
+        .top-logos {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        
+        .logo-item {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-icon img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        
+        .logo-item:hover .logo-icon {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            transform: scale(1.1);
+        }
+        
+        .logo-name {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* GALERIA DE FOTOS - 3 COLUNAS */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px 50px;
+        }
+        
+        .photo-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: rgba(255,255,255,0.08);
+        }
+        
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+        
+        .photo-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-card:hover .photo-container img {
+            transform: scale(1.05);
+        }
+        
+        /* LOGO NO CANTO DA FOTO */
+        .photo-logo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.6);
+            z-index: 2;
+        }
+        
+        .photo-logo img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+        
+        /* NOME DENTRO DA FOTO - FAIXA CINZA TRANSPARENTE */
+        .platform-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            font-size: 1.2em;
+            background: rgba(60, 60, 60, 0.7);
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 0;
+            z-index: 2;
+        }
+        
+        /* CORES DAS LOGOS */
+        .instagram { 
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tiktok { color: #000000; }
+        
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .header {
+                height: 150px;
+                padding: 0 20px;
+            }
+            
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .top-logos {
+                gap: 40px;
+            }
+            
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8em;
+            }
+            
+            .logo-icon img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .logo-name {
+                padding: 6px 12px;
+                font-size: 1em;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 20px 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER COM FOTO DE FUNDO - POSIÇÃO AJUSTADA -->
+    <div class="header">
+        <div class="profile-container">
+            <img src="https://i.imgur.com/QE4031z.jpeg" 
+                 alt="Yuunazinha" 
+                 class="profile-pic">
+            <div class="name">Yuunazinha</div>
+        </div>
+    </div>
+    
+    <!-- LOGOS NO TOPO - 3 PLATAFORMAS -->
+    <div class="top-logos">
+        <!-- PRIVACY -->
+        <div class="logo-item" onclick="window.open('https://privacy.com.br/profile/yuunazinha', '_blank')">
+            <div class="logo-icon">
+                <img src="https://i.imgur.com/3eyn7gr.png" alt="Privacy">
+            </div>
+            <div class="logo-name">Privacy</div>
+        </div>
+        
+        <!-- INSTAGRAM -->
+        <div class="logo-item" onclick="window.open('https://www.instagram.com/yuunazinha?igsh=MW1zempyNGNyOWMwaQ==', '_blank')">
+            <div class="logo-icon instagram">
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div class="logo-name">Instagram</div>
+        </div>
+        
+        <!-- TIKTOK -->
+        <div class="logo-item" onclick="window.open('https://www.tiktok.com/@clau.yunami?_t=ZM-90Iq6hfaQ0K&_r=1', '_blank')">
+            <div class="logo-icon tiktok">
+                <i class="fab fa-tiktok"></i>
+            </div>
+            <div class="logo-name">TikTok</div>
+        </div>
+    </div>
+
+    <!-- GALERIA DE FOTOS - 3 PLATAFORMAS -->
+    <div class="gallery">
+        <!-- PRIVACY -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://privacy.com.br/profile/yuunazinha" 
+                   target="_blank" 
+                   class="photo-link">
+                    <img src="https://i.imgur.com/KEnKmjH.jpeg" alt="Privacy">
+                </a>
+                <div class="photo-logo">
+                    <img src="https://i.imgur.com/3eyn7gr.png" alt="Privacy">
+                </div>
+                <div class="platform-name">Privacy</div>
+            </div>
+        </div>
+        
+        <!-- INSTAGRAM -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.instagram.com/yuunazinha?igsh=MW1zempyNGNyOWMwaQ==" 
+                   target="_blank" 
+                   class="photo-link">
+                    <img src="https://i.imgur.com/BfNfhFW.jpeg" alt="Instagram">
+                </a>
+                <div class="photo-logo instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="platform-name">Instagram</div>
+            </div>
+        </div>
+        
+        <!-- TIKTOK -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.tiktok.com/@clau.yunami?_t=ZM-90Iq6hfaQ0K&_r=1" 
+                   target="_blank" 
+                   class="photo-link">
+                    <img src="https://i.imgur.com/UzvbLyf.jpeg" alt="TikTok">
+                </a>
+                <div class="photo-logo tiktok">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="platform-name">TikTok</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Todos os links já estão funcionando via onclick e href
+    </script>
+</body>
+</html>
